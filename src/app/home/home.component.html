@@ -1,1 +1,16 @@
-<div class="home-page"><p class="heading">Make Your Trip</p></div>
+<div class="home-page">
+  <p class="heading">Make Your Trip</p>
+  <button
+    class="button"
+    mat-raised-button
+    color="primary"
+    routerLink="/travels"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="trending_flat"
+    ></mat-icon>
+    {{ "Click Here" | uppercase }}
+  </button>
+</div>
