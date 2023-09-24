@@ -9,6 +9,7 @@ import {
 import { FormBuilder } from '@angular/forms';
 import { place } from '../app.component';
 import { TravelDataService } from '../travel-data.service';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-place-list',
   templateUrl: './place-list.component.html',
@@ -25,11 +26,15 @@ export class PlaceListComponent {
   get search() {
     return this.searchForm.get('search');
   }
-
+  pagesize = 2;
+  currentpage = 0;
+  totalItems = 0;
   constructor(
     private fb: FormBuilder,
     private placeService: TravelDataService
-  ) {}
+  ) {
+    this.getPlaceList = new Subscription();
+  }
   ngOnInit() {
     this.search?.valueChanges
       .pipe(
@@ -53,10 +58,23 @@ export class PlaceListComponent {
 
   ngOnDestroy() {
     console.log('Destory');
-    this.getPlaceList.unsubscribe();
+    // this.getPlaceList.unsubscribe();
+    if (this.getPlaceList) {
+      this.getPlaceList.unsubscribe();
+    }
   }
 
   delete(idx: number) {
     this.places.splice(idx, 1);
   }
+
+  // onpagechange(event: PageEvent) {
+  //   this.currentpage = event.pageIndex;
+  //   this.pagenavlist();
+  // }
+  // // pagenavlist() {
+  // //   const startIndex = this.currentpage * this.pagesize;
+  // //   const endIndex = startIndex + this.pagesize;
+  // //   this.places = this.places.splice(startIndex, endIndex);
+  // // }
 }

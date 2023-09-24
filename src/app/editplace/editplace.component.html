@@ -193,157 +193,170 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
-<form
-  [formGroup]="placeForm"
-  (ngSubmit)="UpdatePlace()"
-  class="edit-place-form"
->
-  <marquee><h1>Edit Place Data</h1></marquee>
-  <mat-slide-toggle formControlName="popular"
-    ><mat-label>Popular</mat-label></mat-slide-toggle
+<mat-card class="edit-place-card">
+  <form
+    [formGroup]="placeForm"
+    (ngSubmit)="UpdatePlace()"
+    class="edit-place-form"
   >
-  <mat-form-field>
-    <mat-label>Destination</mat-label>
-    <input matInput formControlName="destination" placeholder="Ex. Paris" />
-
-    <mat-error
-      *ngIf="destination?.touched && destination?.hasError('required')"
+    <marquee><h1>Edit Place Data</h1></marquee>
+    <mat-slide-toggle formControlName="popular"
+      ><mat-label>Popular</mat-label></mat-slide-toggle
     >
-      Why not fill this field 😉?
-    </mat-error>
-    <mat-error
-      *ngIf="destination?.touched && destination?.hasError('minlength')"
-    >
-      Please provide full place name
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Destination</mat-label>
+      <input matInput formControlName="destination" placeholder="Ex. Paris" />
 
-  <mat-form-field>
-    <mat-label>Rating</mat-label>
-    <input matInput formControlName="rating" placeholder="Ex. 7" />
-
-    <mat-error *ngIf="rating?.touched && rating?.hasError('required')">
-      Why not fill this field 😉?
-    </mat-error>
-
-    <mat-error
-      *ngIf="
-        rating?.touched && (rating?.hasError('min') || rating?.hasError('max'))
-      "
-    >
-      Rating must be 0 to 10
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>accommodation</mat-label>
-    <input
-      matInput
-      formControlName="accommodation"
-      placeholder="Ex.taj hotel"
-    />
-
-    <mat-error
-      *ngIf="accommodation?.touched && accommodation?.hasError('required')"
-    >
-      Why not fill this field 😉?
-    </mat-error>
-    <mat-error
-      *ngIf="accommodation?.touched && accommodation?.hasError('minlength')"
-    >
-      Please provide a accommodation
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>UploadedDate</mat-label>
-    <input matInput formControlName="date" [matDatepicker]="picker" />
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field class="example-chip-list">
-    <mat-chip-grid #chipList>
-      <mat-chip-row
-        *ngFor="let ingredient of activities.controls; let i = index"
-        (removed)="removeactivities(i)"
+      <mat-error
+        *ngIf="destination?.touched && destination?.hasError('required')"
       >
-        {{ ingredient.value }}
-        <mat-icon matChipRemove>cancel</mat-icon>
-      </mat-chip-row>
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error
+        *ngIf="destination?.touched && destination?.hasError('minlength')"
+      >
+        Please provide full place name
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rating</mat-label>
+      <input matInput formControlName="rating" placeholder="Ex. 7" />
+
+      <mat-error *ngIf="rating?.touched && rating?.hasError('required')">
+        Why not fill this field 😉?
+      </mat-error>
+
+      <mat-error
+        *ngIf="
+          rating?.touched &&
+          (rating?.hasError('min') || rating?.hasError('max'))
+        "
+      >
+        Rating must be 0 to 10
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>accommodation</mat-label>
       <input
-        placeholder="New activities"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        [matChipInputAddOnBlur]="true"
-        (matChipInputTokenEnd)="addactivities($event)"
+        matInput
+        formControlName="accommodation"
+        placeholder="Ex.taj hotel"
       />
-    </mat-chip-grid>
-  </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>place</mat-label>
-    <input matInput formControlName="place" placeholder="Ex. http://img.com" />
+      <mat-error
+        *ngIf="accommodation?.touched && accommodation?.hasError('required')"
+      >
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error
+        *ngIf="accommodation?.touched && accommodation?.hasError('minlength')"
+      >
+        Please provide a accommodation
+      </mat-error>
+    </mat-form-field>
 
-    <mat-error *ngIf="place?.touched && place?.hasError('required')">
-      Why not fill this field 😉?
-    </mat-error>
-    <mat-error *ngIf="place?.touched && place?.hasError('minlength')">
-      Please provide full poster
-    </mat-error>
-    <mat-error *ngIf="place?.touched && place?.hasError('pattern')">
-      Please provide a url with http pattern
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>description</mat-label>
-    <input
-      matInput
-      formControlName="description"
-      placeholder="Ex.turn on stove"
-    />
+    <mat-form-field>
+      <mat-label>UploadedDate</mat-label>
+      <input matInput formControlName="date" [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-    <mat-error
-      *ngIf="description?.touched && description?.hasError('required')"
+    <mat-form-field class="example-chip-list">
+      <mat-chip-grid #chipList>
+        <mat-chip-row
+          *ngFor="let ingredient of activities.controls; let i = index"
+          (removed)="removeactivities(i)"
+        >
+          {{ ingredient.value }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip-row>
+        <input
+          placeholder="New activities"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="true"
+          (matChipInputTokenEnd)="addactivities($event)"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>place</mat-label>
+      <input
+        matInput
+        formControlName="place"
+        placeholder="Ex. http://img.com"
+      />
+
+      <mat-error *ngIf="place?.touched && place?.hasError('required')">
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error *ngIf="place?.touched && place?.hasError('minlength')">
+        Please provide full poster
+      </mat-error>
+      <mat-error *ngIf="place?.touched && place?.hasError('pattern')">
+        Please provide a url with http pattern
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>description</mat-label>
+      <input
+        matInput
+        formControlName="description"
+        placeholder="Ex.turn on stove"
+      />
+
+      <mat-error
+        *ngIf="description?.touched && description?.hasError('required')"
+      >
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error
+        *ngIf="description?.touched && description?.hasError('minlength')"
+      >
+        Please provide min 20 characters.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>placeVlog</mat-label>
+      <input
+        matInput
+        formControlName="placevlog"
+        placeholder="Ex. Cool movie"
+      />
+      <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('required')">
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('minlength')">
+        Please provide a placevlog url
+      </mat-error>
+      <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('pattern')">
+        Please provide a url with http pattern
+      </mat-error>
+    </mat-form-field>
+    <!-- <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating> -->
+
+    <button
+      [disabled]="placeForm.invalid"
+      type="submit"
+      mat-raised-button
+      color="primary"
     >
-      Why not fill this field 😉?
-    </mat-error>
-    <mat-error
-      *ngIf="description?.touched && description?.hasError('minlength')"
-    >
-      Please provide min 20 characters.
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>placeVlog</mat-label>
-    <input matInput formControlName="placevlog" placeholder="Ex. Cool movie" />
-    <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('required')">
-      Why not fill this field 😉?
-    </mat-error>
-    <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('minlength')">
-      Please provide a placevlog url
-    </mat-error>
-    <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('pattern')">
-      Please provide a url with http pattern
-    </mat-error>
-  </mat-form-field>
-  <!-- <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating> -->
-
-  <button
-    [disabled]="placeForm.invalid"
-    type="submit"
-    mat-raised-button
-    color="primary"
-  >
-    <mat-icon
-      aria-hidden="false"
-      aria-label="Example home icon"
-      fontIcon="save"
-    ></mat-icon>
-    {{ "Save" | uppercase }}
-  </button>
-</form>
-
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="save"
+      ></mat-icon>
+      {{ "Save" | uppercase }}
+    </button>
+  </form>
+</mat-card>
 <pre>
   {{ placeForm.value | json }}
 </pre>

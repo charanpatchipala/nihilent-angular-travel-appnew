@@ -1,13 +1,22 @@
 <div class="container">
   <img
-    src="https://www.thefactsite.com/wp-content/uploads/2017/02/top-ten-travel-destinations.jpg"
+    src="https://cdn.pixabay.com/photo/2016/06/10/22/19/beach-1449008_1280.jpg"
     class="placebg"
   />
 
   <app-travel
-    *ngFor="let place of places"
+    *ngFor="let place of places; let i = index"
     [Place]="place"
+    [idx]="i"
     (rmvPlace)="loadPlacesData()"
   >
   </app-travel>
+
+  <!-- <mat-paginator
+    [length]="totalItems"
+    [pageSize]="pagesize"
+    [pageSizeOptions]="[2]"
+    aria-label="Select page"
+  >
+  </mat-paginator> -->
 </div>

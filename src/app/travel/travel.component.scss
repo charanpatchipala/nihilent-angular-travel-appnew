@@ -2,6 +2,7 @@
 mat-card{
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px 10px rgb(24, 148, 148);
     // display:flex
     }
     .placecard {
@@ -39,7 +40,6 @@ mat-card{
     
     
     
-    
     .Pname {
         display: flex;
         justify-content: space-between;
@@ -55,6 +55,13 @@ mat-card{
         object-position: top;
         overflow: hidden;
     }
+
+    .zoom-on-hover {
+        transition: transform 0.3s;
+      }
+       .zoom-on-hover:hover {
+        transform: scale(1.1); 
+      }
     .content{
        justify-content: center;
     }
@@ -73,24 +80,22 @@ mat-card{
     .deletebutton{
         width: 40px;
         height: 40px;
-        /* background-color: aqua; */
-        /* transform: translateX(250px); */
     }
     
     .editbutton{
         width: 40px;
         height: 40px; 
-        /* background-color: black; */
-        /* transform: translateX(200px) translateY(-38px); */
+        
     }
 
-    /* Add a CSS class for the hover effect */
-.zoom-on-hover {
-    transition: transform 0.3s; /* Add a smooth transition for the zoom effect */
-  }
+    .footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:0 1rem;
+        padding-top: 1rem;
+    }
+
   
-  /* When the .zoom-on-hover image is hovered, apply the zoom effect */
-  .zoom-on-hover:hover {
-    transform: scale(1.1); /* Increase the size to 110% when hovered */
-  }
+
   
