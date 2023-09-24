@@ -1,0 +1,193 @@
+<!-- (submit) will refresh the browser -->
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<form [formGroup]="placeForm" (ngSubmit)="addPlace()" class="add-place-form">
+  <div class="input">
+    <marquee><h2>Add Place</h2></marquee>
+    <mat-slide-toggle formControlName="popular"
+      ><mat-label>Popular</mat-label></mat-slide-toggle
+    >
+    <mat-form-field>
+      <mat-label>Destination</mat-label>
+      <input matInput formControlName="destination" placeholder="Ex. Paris" />
+
+      <mat-error
+        *ngIf="destination?.touched && destination?.hasError('required')"
+      >
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error
+        *ngIf="destination?.touched && destination?.hasError('minlength')"
+      >
+        Please provide full place name 😁
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rating</mat-label>
+      <input matInput formControlName="rating" placeholder="Ex. 7" />
+
+      <mat-error *ngIf="rating?.touched && rating?.hasError('required')">
+        Why not fill this field 😉?
+      </mat-error>
+
+      <mat-error
+        *ngIf="
+          rating?.touched &&
+          (rating?.hasError('min') || rating?.hasError('max'))
+        "
+      >
+        Rating must be 0 to 10
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>place</mat-label>
+      <input
+        matInput
+        formControlName="place"
+        placeholder="Ex. http://img.com"
+      />
+      <mat-error *ngIf="place?.touched && place?.hasError('required')">
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error *ngIf="place?.touched && place?.hasError('minlength')">
+        Please provide longer place URL 😁
+      </mat-error>
+
+      <mat-error *ngIf="place?.touched && place?.hasError('pattern')">
+        Please provide valid URL 🎊
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Suggestions</mat-label>
+      <input
+        matInput
+        formControlName="suggestions"
+        placeholder="Ex. describe about place"
+      />
+
+      <mat-error
+        *ngIf="suggestions?.touched && suggestions?.hasError('required')"
+      >
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error
+        *ngIf="suggestions?.touched && suggestions?.hasError('minlength')"
+      >
+        Please provide longer suggestions 😁
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Accommodation</mat-label>
+      <input
+        matInput
+        formControlName="accommodation"
+        placeholder="Ex. describe about place"
+      />
+
+      <mat-error
+        *ngIf="accommodation?.touched && accommodation?.hasError('required')"
+      >
+        Accomodation reqired?
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Place Description</mat-label>
+      <input
+        matInput
+        formControlName="description"
+        placeholder="Ex. describe about place"
+      />
+
+      <mat-error
+        *ngIf="description?.touched && description?.hasError('required')"
+      >
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error
+        *ngIf="description?.touched && description?.hasError('minlength')"
+      >
+        Please provide longer description 😁
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>PlaceVlog</mat-label>
+      <input
+        matInput
+        formControlName="placevlog"
+        placeholder="Ex. place vedio"
+      />
+
+      <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('required')">
+        Why not fill this field 😉?
+      </mat-error>
+      <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('minlength')">
+        Please provide longer placevlog url 😁
+      </mat-error>
+
+      <mat-error *ngIf="placevlog?.touched && placevlog?.hasError('pattern')">
+        Please provide valid URL 🎊
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput formControlName="date" [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker
+    ></mat-form-field>
+
+    <mat-form-field class="example-chip-list">
+      <mat-label> Activites</mat-label>
+      <mat-chip-grid #chipList>
+        <mat-chip-row
+          *ngFor="let name of activities.controls; let i = index"
+          (removed)="removeactivitiesName(i)"
+        >
+          {{ name.value }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip-row>
+        <input
+          placeholder="New activities names..."
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="true"
+          (matChipInputTokenEnd)="addactivitiesName($event)"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+
+    <!-- <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating> -->
+    <!-- <button type="submit" mat-raised-button color="primary">add</button> -->
+
+    <button
+      class="addplacebtn"
+      [disabled]="placeForm.invalid"
+      type="submit"
+      mat-raised-button
+      color="warn"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="add"
+      ></mat-icon>
+      {{ "Add place" | uppercase }}
+    </button>
+  </div>
+</form>
+
+<pre>
+  {{ placeForm.value | json }}
+</pre>

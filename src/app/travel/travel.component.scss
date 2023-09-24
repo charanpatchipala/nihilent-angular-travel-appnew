@@ -1,0 +1,83 @@
+
+mat-card{
+    border-radius: 30px;
+    // display:flex
+    }
+    
+    .placecard {
+        justify-content: center;
+        /* border: 2px solid black; */
+        border-radius: 30px;
+        background-color: rgb(245, 245, 245);
+        width: 25rem;
+        /* height: 40rem; */
+        overflow: hidden;
+        position: relative;
+        // background-image: url(https://www.thefactsite.com/wp-content/uploads/2017/02/top-ten-travel-destinations.jpg);
+        // background-size: cover;
+        // background-position: center;
+
+    }
+    
+    .placebadge{
+        background:orangered;
+        color: white;
+       position: absolute; 
+       padding: 0.5rem 1rem;
+       top: 10px;
+       right:0px;
+       /* transform: translateX(50%); */
+       border-radius: 0.5rem;
+    }
+    
+     .placecontent{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    padding: 1rem;
+     }
+    
+    
+    
+    
+    .Pname {
+        display: flex;
+        justify-content: space-between;
+    }
+    .name{
+        font-weight: 900;
+    }
+    
+    .poster {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        object-position: top;
+        overflow: hidden;
+    }
+    .content{
+       justify-content: center;
+    }
+    
+    .info{
+        border: 0;
+    }
+    
+    .crudbuttons{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .deletebutton{
+        width: 40px;
+        height: 40px;
+        /* background-color: aqua; */
+        /* transform: translateX(250px); */
+    }
+    
+    .editbutton{
+        width: 40px;
+        height: 40px; 
+        /* background-color: black; */
+        /* transform: translateX(200px) translateY(-38px); */
+    }

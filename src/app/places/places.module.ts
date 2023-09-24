@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
+
+import { PlacesRoutingModule } from './places-routing.module';
+import { PlacesComponent } from './places.component';
+import { AddplaceComponent } from '../addplace/addplace.component';
+import { CounterComponent } from '../counter/counter.component';
+import { PlaceListComponent } from '../place-list/place-list.component';
+import { TravelComponent } from '../travel/travel.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -11,11 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { TravelComponent } from './travel/travel.component';
-import { CounterComponent } from './counter/counter.component';
-import { PlaceListComponent } from './place-list/place-list.component';
-import { HomeComponent } from './home/home.component';
-import { AddplaceComponent } from './addplace/addplace.component';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,14 +30,23 @@ import {
   MatChipInputEvent,
   MatChipEditedEvent,
 } from '@angular/material/chips';
-import { EditplaceComponent } from './editplace/editplace.component';
-import { PlacedetailComponent } from './placedetail/placedetail.component';
+import { EditplaceComponent } from '../editplace/editplace.component';
+import { PlacedetailComponent } from '../placedetail/placedetail.component';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [
+    PlacesComponent,
+    TravelComponent,
+    CounterComponent,
+    PlaceListComponent,
+
+    AddplaceComponent,
+    EditplaceComponent,
+    PlacedetailComponent,
+  ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    CommonModule,
+    PlacesRoutingModule,
     MatListModule,
     MatButtonModule,
     MatInputModule,
@@ -51,7 +62,5 @@ import { PlacedetailComponent } from './placedetail/placedetail.component';
     MatFormFieldModule,
     MatSlideToggleModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class PlacesModule {}

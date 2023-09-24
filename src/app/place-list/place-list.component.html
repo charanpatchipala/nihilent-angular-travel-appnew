@@ -1,0 +1,13 @@
+<div class="container">
+  <img
+    src="https://www.thefactsite.com/wp-content/uploads/2017/02/top-ten-travel-destinations.jpg"
+    class="placebg"
+  />
+
+  <app-travel
+    *ngFor="let place of places"
+    [Place]="place"
+    (rmvPlace)="loadPlacesData()"
+  >
+  </app-travel>
+</div>

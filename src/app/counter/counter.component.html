@@ -1,0 +1,10 @@
+<div class="likecounter">
+  <span class="reaction">
+    <mat-icon matBadge="{{ count }}" matBadgeColor="warn">
+      <button class="rxn" (click)="increment()">👍</button></mat-icon
+    >
+    <mat-icon matBadge="{{ dcount }}" matBadgeColor="warn">
+      <button class="rxn" (click)="decrement()">👎</button></mat-icon
+    >
+  </span>
+</div>
