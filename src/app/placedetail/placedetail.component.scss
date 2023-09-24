@@ -1,0 +1,60 @@
+section{
+    background-color: rgb(126, 44, 54);
+}
+
+.placevlogcard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:rgb(12, 15, 16);
+    padding: 20px;
+    box-shadow: 0 2px 4px  rgba(126, 44, 54, 0.1);
+    border-radius: 8px;
+    max-width: 930px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.placecontent {
+    display: flex;
+    justify-content: center;
+    background-color:rgb(126 44 54);
+    gap: 20px;
+    padding: 10px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  iframe{
+    width: 100%;
+  }
+
+  .place-detail{
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(126 44 54);
+    // justify-content: flex-start;
+    
+  }
+
+  
+  
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  
+  .video-container {
+    width: 100%;
+    max-width: 930px;
+    overflow: hidden;
+  }
+  

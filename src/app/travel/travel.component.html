@@ -1,51 +1,49 @@
-<section>
-  <mat-card>
-    <div class="placecard">
-      <img src="{{ Place.place }}" alt="place" class="poster" />
-      <p *ngIf="Place.popular" class="placebadge">Popular</p>
-      <div class="placecontent">
-        <div class="Pname">
-          <span class="name">{{ Place.destination }}</span>
-          <button (click)="toggle()" mat-icon-button aria-label="Expand Less">
-            <mat-icon *ngIf="show; else moreIcon">expand_less</mat-icon>
-            <ng-template #moreIcon>
-              <mat-icon>expand_more</mat-icon>
-            </ng-template>
-          </button>
-          <button class="info" (click)="getdetails()">
-            <mat-icon>info</mat-icon>
-          </button>
-          <span class="name">⭐{{ Place.rating }}</span>
-        </div>
-        <em>{{ Place.date | date : "MMMM YYYY" }}</em>
-        <p *ngIf="show" class="content">{{ Place.description }}</p>
-        <app-counter
-          [count]="Place.like"
-          [dcount]="Place.dislike"
-          (likeCount)="updateLikes($event)"
-          (dislikeCount)="updateDislikes($event)"
-        ></app-counter>
-        <span class="crudbuttons">
-          <button
-            class="deletebutton"
-            mat-icon-button
-            color="warn"
-            (click)="deletePlace()"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-
-          <button
-            class="editbutton"
-            mat-icon-button
-            color="primary"
-            (click)="editPlace()"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </span>
+<mat-card>
+  <div class="placecard">
+    <img src="{{ Place.place }}" alt="place" class="poster zoom-on-hover" />
+    <p *ngIf="Place.popular" class="placebadge">Popular</p>
+    <div class="placecontent">
+      <div class="Pname">
+        <span class="name">{{ Place.destination }}</span>
+        <button (click)="toggle()" mat-icon-button aria-label="Expand Less">
+          <mat-icon *ngIf="show; else moreIcon">expand_less</mat-icon>
+          <ng-template #moreIcon>
+            <mat-icon>expand_more</mat-icon>
+          </ng-template>
+        </button>
+        <button class="info" (click)="getdetails()">
+          <mat-icon>info</mat-icon>
+        </button>
+        <span class="name">⭐{{ Place.rating }}</span>
       </div>
-      <!-- <button (click)="delMovie()">Delete Movie</button> -->
+      <!-- <em>{{ Place.date | date : "MMMM" }}</em> -->
+      <p *ngIf="show" class="content">{{ Place.description }}</p>
+      <app-counter
+        [count]="Place.like"
+        [dcount]="Place.dislike"
+        (likeCount)="updateLikes($event)"
+        (dislikeCount)="updateDislikes($event)"
+      ></app-counter>
+      <span class="crudbuttons">
+        <button
+          class="deletebutton"
+          mat-icon-button
+          color="warn"
+          (click)="deletePlace()"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <button
+          class="editbutton"
+          mat-icon-button
+          color="primary"
+          (click)="editPlace()"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </span>
     </div>
-  </mat-card>
-</section>
+    <!-- <button (click)="delMovie()">Delete Movie</button> -->
+  </div>
+</mat-card>

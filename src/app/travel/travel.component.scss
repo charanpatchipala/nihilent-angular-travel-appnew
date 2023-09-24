@@ -1,14 +1,14 @@
 
 mat-card{
     border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
     // display:flex
     }
-    
     .placecard {
+        // display: flex;
         justify-content: center;
         /* border: 2px solid black; */
         border-radius: 30px;
-        background-color: rgb(245, 245, 245);
         width: 25rem;
         /* height: 40rem; */
         overflow: hidden;
@@ -61,6 +61,8 @@ mat-card{
     
     .info{
         border: 0;
+        // border-radius: 50%;
+        background-color:  rgba(255, 255, 255, 0.5);
     }
     
     .crudbuttons{
@@ -81,3 +83,14 @@ mat-card{
         /* background-color: black; */
         /* transform: translateX(200px) translateY(-38px); */
     }
+
+    /* Add a CSS class for the hover effect */
+.zoom-on-hover {
+    transition: transform 0.3s; /* Add a smooth transition for the zoom effect */
+  }
+  
+  /* When the .zoom-on-hover image is hovered, apply the zoom effect */
+  .zoom-on-hover:hover {
+    transform: scale(1.1); /* Increase the size to 110% when hovered */
+  }
+  
