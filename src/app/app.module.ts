@@ -23,6 +23,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import {
   MatChipsModule,
   MatChipInputEvent,
@@ -30,6 +31,7 @@ import {
 } from '@angular/material/chips';
 import { EditplaceComponent } from './editplace/editplace.component';
 import { PlacedetailComponent } from './placedetail/placedetail.component';
+
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
@@ -50,6 +52,7 @@ import { PlacedetailComponent } from './placedetail/placedetail.component';
     MatNativeDateModule,
     MatFormFieldModule,
     MatSlideToggleModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

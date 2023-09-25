@@ -10,15 +10,19 @@ import { FormBuilder } from '@angular/forms';
 import { place } from '../app.component';
 import { TravelDataService } from '../travel-data.service';
 import { PageEvent } from '@angular/material/paginator';
+// import { MatPaginatorModule } from '@angular/material/paginator';
 @Component({
   selector: 'app-place-list',
   templateUrl: './place-list.component.html',
   styleUrls: ['./place-list.component.scss'],
+  // standalone: true,
+  // imports: [MatPaginatorModule],
 })
 export class PlaceListComponent {
   places: Array<place> = [];
   getPlaceList: Subscription | any;
-
+  isLoading: boolean = false;
+  searchTerm!: string;
   searchForm = this.fb.group({
     search: '',
   });
@@ -26,9 +30,7 @@ export class PlaceListComponent {
   get search() {
     return this.searchForm.get('search');
   }
-  pagesize = 2;
-  currentpage = 0;
-  totalItems = 0;
+
   constructor(
     private fb: FormBuilder,
     private placeService: TravelDataService
@@ -67,14 +69,15 @@ export class PlaceListComponent {
   delete(idx: number) {
     this.places.splice(idx, 1);
   }
+  onNewItems(newItems: place[]): void {
+    if (newItems.length === 0) {
+      this.places = []; // Reset the list if an empty array is received
+    } else {
+      this.places = [...this.places, ...newItems];
+    }
+  }
 
-  // onpagechange(event: PageEvent) {
-  //   this.currentpage = event.pageIndex;
-  //   this.pagenavlist();
-  // }
-  // // pagenavlist() {
-  // //   const startIndex = this.currentpage * this.pagesize;
-  // //   const endIndex = startIndex + this.pagesize;
-  // //   this.places = this.places.splice(startIndex, endIndex);
-  // // }
+  onLoadingChange(isLoading: boolean): void {
+    this.isLoading = isLoading;
+  }
 }

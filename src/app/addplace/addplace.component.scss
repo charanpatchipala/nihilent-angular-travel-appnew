@@ -1,36 +1,37 @@
 
   
+ .background{
+    // background-image: url(https://cdn.pixabay.com/photo/2018/03/06/03/56/cyclist-3202481_1280.jpg);
+    background-image: url(https://img.freepik.com/free-vector/travel-background_23-2148057717.jpg?w=2000);
+    background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+ 
+.add-place-form {
+  display: grid;
+ width: 50%;
+margin: 0 auto;
+}
 
-//   .background {
-//     background-image: url('https://cdn.pixabay.com/photo/2018/03/06/03/56/cyclist-3202481_1280.jpg'); /* Replace with the path or URL of your image */
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//     background-attachment: fixed;
-//     background-position: center center;
-//     height: 100%; 
-//     width: 100%; 
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
+.add-place-form {
+  border: 2px solid #ccc; 
+  border-radius: 5px;
+padding: 20px; 
+ background-color: transparent;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+// margin: 0 auto;
+}
+
+
+
+//   .add-place-form {
+//     border: 2px solid #ccc; 
+//     padding: 20px; 
+//     border-radius: 5px;
+//     background-color: transparent;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
 //   }
   
-  mat-card{
-    background-image: url(https://cdn.pixabay.com/photo/2018/03/06/03/56/cyclist-3202481_1280.jpg);
-    padding: 20px;
-}
-    
-
-.edit-place-form{
- box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
-    display: grid;
-    justify-content: center;
-    padding: 20px;
-}
-  
-  .input {
-    display: grid;
-    justify-content: center;
-    gap: 10px;
-    margin: 0.5rem 0;
-  }
-  
+ 

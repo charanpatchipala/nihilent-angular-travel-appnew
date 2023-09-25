@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Component } from '@angular/core';
 import { place, AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http';
+const API = 'https://64f6f41e9d7754084952d8a0.mockapi.io/travels';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,6 +12,15 @@ export class TravelDataService {
 
   getPlaces() {
     return this.places;
+  }
+
+  getpageListPagination(page: number, limit: number, searchTerm?: string) {
+    let url = `${API}?limit=${limit}&page=${page}`;
+    if (searchTerm) {
+      url += `&search=${searchTerm}`;
+    }
+
+    return this.http.get<place[]>(url);
   }
 
   getPlaceListFromMockAPI() {

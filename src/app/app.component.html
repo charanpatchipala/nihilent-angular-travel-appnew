@@ -3,10 +3,32 @@
 </div> -->
 <header>
   <nav>
-    <mat-toolbar color="primary">
-      <button mat-button routerLink="/">Home</button>
-      <button mat-button routerLink="/travels">Destinations</button>
-      <button mat-button routerLink="/places/add">Add Place</button>
+    <mat-toolbar class="navbar">
+      <!-- <button mat-button routerLink="/">Home</button> -->
+      <!-- <button mat-button routerLink="/travels">Destinations</button> -->
+      <!-- <button mat-button routerLink="/places/add">Add Place</button> -->
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <button mat-button routerLink="/">Home</button>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>place</mat-icon>
+          <button mat-button routerLink="/travels">Destinations</button>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>add</mat-icon>
+          <button mat-button routerLink="/places/add">Add Place</button>
+        </button>
+      </mat-menu>
+      <button mat-button routerLink="/" class="logo">MakeYourTrip</button>
     </mat-toolbar>
   </nav>
 </header>

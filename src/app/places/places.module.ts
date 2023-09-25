@@ -33,6 +33,10 @@ import {
 } from '@angular/material/chips';
 import { EditplaceComponent } from '../editplace/editplace.component';
 import { PlacedetailComponent } from '../placedetail/placedetail.component';
+import { InfiniteScrollDirective } from '../infinite-scroll.directive';
+import { TravelDataService } from '../travel-data.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -40,10 +44,10 @@ import { PlacedetailComponent } from '../placedetail/placedetail.component';
     TravelComponent,
     CounterComponent,
     PlaceListComponent,
-
     AddplaceComponent,
     EditplaceComponent,
     PlacedetailComponent,
+    InfiniteScrollDirective,
   ],
   imports: [
     CommonModule,
@@ -63,6 +67,9 @@ import { PlacedetailComponent } from '../placedetail/placedetail.component';
     MatFormFieldModule,
     MatSlideToggleModule,
     MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
   ],
+  providers: [TravelDataService],
 })
 export class PlacesModule {}

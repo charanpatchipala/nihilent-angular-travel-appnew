@@ -1,22 +1,45 @@
-<div class="container">
-  <img
-    src="https://cdn.pixabay.com/photo/2016/06/10/22/19/beach-1449008_1280.jpg"
-    class="placebg"
-  />
+<div class="background-container">
+  <form [formGroup]="searchForm" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Search places</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        formControlName="search"
+        type="text"
+        matInput
+        placeholder="Ex. goa"
+      />
+    </mat-form-field>
+  </form>
 
-  <app-travel
-    *ngFor="let place of places; let i = index"
-    [Place]="place"
-    [idx]="i"
-    (rmvPlace)="loadPlacesData()"
-  >
-  </app-travel>
+  <section
+    appInfiniteScroll
+    apiEndpoint
+    [pageSize]="4"
+    [searchTerm]="searchTerm"
+    (items)="onNewItems($event)"
+    (loading)="onLoadingChange($event)"
+  ></section>
+  <div class="container">
+    <img
+      src="https://cdn.pixabay.com/photo/2016/06/10/22/19/beach-1449008_1280.jpg"
+      class="placebg"
+    />
 
-  <!-- <mat-paginator
-    [length]="totalItems"
-    [pageSize]="pagesize"
-    [pageSizeOptions]="[2]"
-    aria-label="Select page"
-  >
-  </mat-paginator> -->
+    <app-travel
+      *ngFor="let place of places; let i = index"
+      [Place]="place"
+      [idx]="i"
+      (rmvPlace)="loadPlacesData()"
+    >
+    </app-travel>
+
+    <!-- <mat-paginator
+      [length]="totalItems"
+      [pageSize]="pagesize"
+      [pageSizeOptions]="[2]"
+      aria-label="Select page"
+    >
+    </mat-paginator> -->
+  </div>
 </div>

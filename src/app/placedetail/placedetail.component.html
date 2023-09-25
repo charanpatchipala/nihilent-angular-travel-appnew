@@ -38,14 +38,14 @@
 
         <div class="place-detail">
           <p *ngIf="show" class="content">{{ place.description }}</p>
-          <em
+          <em class="dname"
             ><strong>Best time to visit:</strong
             >{{ place?.date | date : "MMMM" }}</em
           >
-          <span class="name"
+          <span class="dname"
             ><strong>Activities:</strong>{{ place.activities }}</span
           >
-          <span class="name"
+          <span class="dname"
             ><strong>Suggestions:</strong>{{ place.suggestions }}</span
           >
         </div>

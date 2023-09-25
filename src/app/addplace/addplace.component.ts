@@ -13,6 +13,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 })
 export class AddplaceComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
+  progress = 0;
   placeForm = this.fb.group({
     destination: ['', [Validators.required, Validators.minLength(5)]],
     popular: false,
@@ -29,7 +30,7 @@ export class AddplaceComponent {
     description: ['', [Validators.required, Validators.minLength(20)]],
     suggestions: ['', [Validators.required, Validators.minLength(20)]],
     date: ['', [Validators.required]],
-    activities: this.fb.array(['']),
+    activities: this.fb.array([]),
     like: [0],
     dislike: [0],
     placevlog: [
@@ -50,6 +51,20 @@ export class AddplaceComponent {
     private fb: FormBuilder
   ) {
     this.places = placeService.getPlaces();
+  }
+
+  ngOnInit() {
+    this.placeForm.valueChanges.subscribe(() => {
+      this.updateProgress();
+    });
+  }
+  updateProgress() {
+    const allControls = Object.keys(this.placeForm.controls);
+    const validControls = allControls.filter(
+      (key) => this.placeForm.get(key)?.valid
+    );
+
+    this.progress = (validControls.length / allControls.length) * 100;
   }
 
   get destination() {
