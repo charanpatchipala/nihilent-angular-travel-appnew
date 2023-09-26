@@ -108,9 +108,9 @@ export class AddplaceComponent {
     event.chipInput!.clear();
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
+  // openSnackBar(message: string, action: string) {
+
+  // }
 
   removeactivitiesName(index: number) {
     this.activities.removeAt(index);
@@ -124,6 +124,12 @@ export class AddplaceComponent {
       console.log(newPlace);
 
       this.placeService.addPlace(newPlace as place).subscribe(() => {
+        this._snackBar.open('Place added successfully', 'Close', {
+          duration: 3000,
+          panelClass: ['snackbar-success'],
+          verticalPosition: 'top',
+          horizontalPosition: 'end',
+        });
         this.router.navigate(['/travels']);
       });
     }

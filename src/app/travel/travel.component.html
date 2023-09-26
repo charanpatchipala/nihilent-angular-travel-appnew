@@ -1,8 +1,20 @@
-<mat-card>
+<mat-card (mouseenter)="hovered = true" (mouseleave)="hovered = false">
   <div class="placecard">
+    <!-- <img
+      src="{{ Place.place }}"
+      alt="place"
+      class="poster zoom-on-hover"
+      *ngIf="!hovered"
+    />
+    <img
+      src="{{ Place.destination }}"
+      alt="newPlace"
+      class="poster zoom-on-hover"
+      *ngIf="hovered"
+    /> -->
     <img src="{{ Place.place }}" alt="place" class="poster zoom-on-hover" />
     <p *ngIf="Place.popular" class="placebadge">Popular</p>
-    <div class="placecontent">
+    <div class="placecontent" *ngIf="hovered">
       <div class="Pname">
         <span class="name">
           <mat-icon>place</mat-icon> {{ Place.destination }}</span

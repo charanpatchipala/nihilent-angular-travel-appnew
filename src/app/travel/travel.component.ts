@@ -34,7 +34,7 @@ export class TravelComponent {
   disLikeSubject = new Subject<number>();
 
   show = true;
-
+  hovered: boolean = false;
   constructor(
     private router: Router,
     private placeService: TravelDataService,

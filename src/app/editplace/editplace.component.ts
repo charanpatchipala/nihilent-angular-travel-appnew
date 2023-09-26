@@ -5,6 +5,7 @@ import { TravelDataService } from '../travel-data.service';
 import { place } from '../app.component';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editplace',
@@ -50,7 +51,8 @@ export class EditplaceComponent {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private placeService: TravelDataService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     const { id } = this.route.snapshot.params;
     this.id = id;
@@ -122,6 +124,12 @@ export class EditplaceComponent {
       this.placeService
         .updatePlace(updatedPlace as place, this.id)
         .subscribe(() => {
+          this._snackBar.open('Place updated successfully', 'Close', {
+            duration: 5000,
+            panelClass: ['snackbar-success'],
+            verticalPosition: 'top',
+            horizontalPosition: 'end',
+          });
           this.router.navigate(['/travels']);
         });
     }
