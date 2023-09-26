@@ -2,7 +2,7 @@
   <form [formGroup]="searchForm" class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Search places</mat-label>
-      <mat-icon matPrefix>search</mat-icon>
+      <mat-icon matPrefix>location_searching</mat-icon>
       <input
         formControlName="search"
         type="text"
@@ -11,7 +11,9 @@
       />
     </mat-form-field>
   </form>
-
+  <div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
   <section
     appInfiniteScroll
     apiEndpoint

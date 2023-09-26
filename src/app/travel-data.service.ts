@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Component } from '@angular/core';
 import { place, AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 const API = 'https://64f6f41e9d7754084952d8a0.mockapi.io/travels';
 @Injectable({
   providedIn: 'root',
 })
 export class TravelDataService {
   places: Array<place> = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dialog: MatDialog) {}
 
   getPlaces() {
     return this.places;
@@ -63,5 +65,12 @@ export class TravelDataService {
 
   setPlaces(newPlace: place) {
     this.places.push(newPlace);
+  }
+
+  openConfirmDialog() {
+    return this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '450px',
+      data: { message: 'Are you sure you want to delete this movie?' },
+    });
   }
 }

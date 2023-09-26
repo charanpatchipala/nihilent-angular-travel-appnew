@@ -4,13 +4,9 @@
     <p *ngIf="Place.popular" class="placebadge">Popular</p>
     <div class="placecontent">
       <div class="Pname">
-        <span class="name">{{ Place.destination }}</span>
-        <!-- <button (click)="toggle()" mat-icon-button aria-label="Expand Less">
-          <mat-icon *ngIf="show; else moreIcon">expand_less</mat-icon>
-          <ng-template #moreIcon>
-            <mat-icon>expand_more</mat-icon>
-          </ng-template>
-        </button> -->
+        <span class="name">
+          <mat-icon>place</mat-icon> {{ Place.destination }}</span
+        >
         <button class="info" (click)="getdetails()">
           <mat-icon>info</mat-icon>
         </button>
@@ -31,7 +27,7 @@
             class="deletebutton"
             mat-icon-button
             color="warn"
-            (click)="deletePlace()"
+            (click)="delPlace()"
           >
             <mat-icon>delete</mat-icon>
           </button>

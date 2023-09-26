@@ -9,7 +9,6 @@ import { PlaceListComponent } from '../place-list/place-list.component';
 import { TravelComponent } from '../travel/travel.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -22,21 +21,23 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {
-  MatChipsModule,
-  MatChipInputEvent,
-  MatChipEditedEvent,
-} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 import { EditplaceComponent } from '../editplace/editplace.component';
 import { PlacedetailComponent } from '../placedetail/placedetail.component';
 import { InfiniteScrollDirective } from '../infinite-scroll.directive';
 import { TravelDataService } from '../travel-data.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogModule,
+} from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     EditplaceComponent,
     PlacedetailComponent,
     InfiniteScrollDirective,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -69,7 +71,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
-  providers: [TravelDataService],
+  providers: [TravelDataService, MatDialog],
 })
 export class PlacesModule {}

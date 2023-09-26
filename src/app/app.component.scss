@@ -1,5 +1,15 @@
+
+
+.lnavbar {
+    display: none;
+    background-color: skyblue;
+    // align-items: center;
+    // justify-content: space-between;
+  }
+
 .navbar{
     background-color: skyblue;
+    display: block;
 }
 .logo {
     font-family: Arial, sans-serif;
@@ -9,3 +19,15 @@
     text-transform: uppercase;
     text-decoration: none;
 }
+
+@media (min-width: 768px) {
+    .lnavbar {
+      display: flex;
+      justify-content: space-between;
+    }
+    .navbar {
+      display: none;
+    }
+  }
+  
+  

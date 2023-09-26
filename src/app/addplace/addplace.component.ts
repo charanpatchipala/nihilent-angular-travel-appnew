@@ -5,6 +5,7 @@ import { TravelDataService } from '../travel-data.service';
 import { place } from '../app.component';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-addplace',
@@ -48,7 +49,8 @@ export class AddplaceComponent {
   constructor(
     private placeService: TravelDataService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {
     this.places = placeService.getPlaces();
   }
@@ -104,6 +106,10 @@ export class AddplaceComponent {
     }
 
     event.chipInput!.clear();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   removeactivitiesName(index: number) {

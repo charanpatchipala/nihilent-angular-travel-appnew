@@ -47,7 +47,7 @@ export class PlaceListComponent {
       .subscribe((plcList) => {
         this.places = plcList;
       });
-    this.loadPlacesData();
+    // this.loadPlacesData();
   }
 
   loadPlacesData() {

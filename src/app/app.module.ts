@@ -31,6 +31,7 @@ import {
 } from '@angular/material/chips';
 import { EditplaceComponent } from './editplace/editplace.component';
 import { PlacedetailComponent } from './placedetail/placedetail.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -53,6 +54,7 @@ import { PlacedetailComponent } from './placedetail/placedetail.component';
     MatFormFieldModule,
     MatSlideToggleModule,
     MatMenuModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

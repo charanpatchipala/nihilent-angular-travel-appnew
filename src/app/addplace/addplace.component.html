@@ -194,6 +194,21 @@
     </button>
     <!-- </div> -->
   </form>
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <input matInput value="PLACE ADDED Succesfully" #message />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Action</mat-label>
+    <input matInput value="Dance" #action />
+  </mat-form-field>
+
+  <button
+    mat-stroked-button
+    (click)="openSnackBar(message.value, action.value)"
+  ></button>
+
   <!-- </mat-card> -->
 </div>
 <!-- <pre>

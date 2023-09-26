@@ -3,6 +3,9 @@ import { debounceTime, Subject, switchMap } from 'rxjs';
 import { place } from '../app.component';
 import { Router } from '@angular/router';
 import { TravelDataService } from '../travel-data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+
 @Component({
   selector: 'app-travel',
   templateUrl: './travel.component.html',
@@ -32,7 +35,11 @@ export class TravelComponent {
 
   show = true;
 
-  constructor(private router: Router, private placeService: TravelDataService) {
+  constructor(
+    private router: Router,
+    private placeService: TravelDataService,
+    private dialog: MatDialog
+  ) {
     this.likeSubject
       .pipe(
         debounceTime(1000),
@@ -53,6 +60,23 @@ export class TravelComponent {
       .subscribe();
   }
 
+  openConfirmDialog() {
+    return this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '450px',
+      data: { message: 'Are you sure you want to delete this place?' },
+    });
+  }
+
+  // Delete -> Refresh data
+  delPlace() {
+    this.openConfirmDialog()
+      .afterClosed()
+      .subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.deletePlace();
+        }
+      });
+  }
   deletePlace() {
     this.placeService.deletePlaceById(this.Place.id).subscribe(() => {
       console.log('place deleted successfully');
