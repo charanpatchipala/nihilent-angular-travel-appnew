@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TravelDataService } from '../travel-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-travel',
@@ -38,7 +39,8 @@ export class TravelComponent {
   constructor(
     private router: Router,
     private placeService: TravelDataService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackbar: MatSnackBar
   ) {
     this.likeSubject
       .pipe(
@@ -80,6 +82,12 @@ export class TravelComponent {
   deletePlace() {
     this.placeService.deletePlaceById(this.Place.id).subscribe(() => {
       console.log('place deleted successfully');
+      this.snackbar.open('Place added successfully', 'Close', {
+        duration: 2500,
+        panelClass: ['snackbar-success'],
+        verticalPosition: 'top',
+        horizontalPosition: 'end',
+      });
       this.rmvPlace.emit();
     });
   }

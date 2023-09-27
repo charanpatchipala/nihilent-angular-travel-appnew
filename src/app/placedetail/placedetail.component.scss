@@ -79,6 +79,7 @@ mat-card{
   .video-container {
     width: 100%;
     max-width: 930px;
+    object-fit: cover;
     overflow: hidden;
   }
   

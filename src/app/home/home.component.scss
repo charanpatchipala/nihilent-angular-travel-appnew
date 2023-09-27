@@ -39,9 +39,28 @@ body{
           transform: translate(-50%, -50%);  
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
-@media(max-width:400px){
-  .heading{font-size: 2rem;}
+@media(max-width:650px){
+  .heading{font-size: 1.5rem;
+    width:80%;
+    top: 30%;}
+    .caption{
+      font-size: 1rem;
+      width: 90%;
+      color: black;
+    }
+}
+
+
+@media(max-width:423px){
+  .heading{font-size: 1.3rem;
+  width:80%;
+  top: 30%;}
   .caption{
-    font-size: 0.5rem;
+    font-size: 1rem;
+    width: 90%;
+    color: black;
+  }
+  .button{
+    width: 70%;
   }
 }
