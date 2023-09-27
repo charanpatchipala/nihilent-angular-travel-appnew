@@ -39,14 +39,6 @@ body{
           transform: translate(-50%, -50%);  
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
-// html, body {
-//     height: 100%;
-//     margin: 0;
-//     padding: 0;
-// }
-
-// body {
-//     background-image: url(https://www.thefactsite.com/wp-content/uploads/2017/02/top-ten-travel-destinations.jpg);
-//     background-size: cover;
-//     background-position: center;
-// }
+@media(max-width:400px){
+  .heading{font-size: 1rem;}
+}
