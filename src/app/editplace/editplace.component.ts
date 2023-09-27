@@ -123,8 +123,8 @@ export class EditplaceComponent {
 
       this.placeService
         .updatePlace(updatedPlace as place, this.id)
-        .subscribe(() => {
-          this._snackBar.open('Place updated successfully', 'Close', {
+        .subscribe((response) => {
+          this._snackBar.open(`destination updated successfully`, 'Close', {
             duration: 5000,
             panelClass: ['snackbar-success'],
             verticalPosition: 'top',
