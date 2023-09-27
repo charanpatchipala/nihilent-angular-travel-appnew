@@ -40,5 +40,8 @@ body{
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
 @media(max-width:400px){
-  .heading{font-size: 1rem;}
+  .heading{font-size: 1.5rem;}
+  .caption{
+    font-size: 0.5rem;
+  }
 }
