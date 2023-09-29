@@ -8,7 +8,47 @@
         type="text"
         matInput
         placeholder="Ex. goa"
+        list="search_list"
       />
+
+      <datalist id="search_list">
+        <option
+          class="option"
+          *ngFor="let place of places"
+          [value]="place.destination"
+        >
+          <!-- {{ place.destination }} -->
+        </option>
+
+        <!-- <option class="option" value="C++">C++</option> -->
+      </datalist>
+
+      <mat-icon
+        matSuffix
+        *ngIf="
+          searchForm.get('search')?.value !== null &&
+          searchForm.get('search')?.value !== ''
+        "
+        (click)="onCancel()"
+        >cancel</mat-icon
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sort By</mat-label>
+      <mat-select (selectionChange)="onSortChange($event)">
+        <mat-option value="popular">destination</mat-option>
+        <mat-option value="rating">Rating</mat-option>
+        <mat-option value="date">Best time to visit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Order</mat-label>
+      <mat-select (selectionChange)="onOrderChange($event)">
+        <mat-option value="asc">Ascending</mat-option>
+        <mat-option value="desc">Descending</mat-option>
+      </mat-select>
     </mat-form-field>
   </form>
   <div class="spinner-container" *ngIf="isLoading">

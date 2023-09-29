@@ -4,6 +4,7 @@ import { place, AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { HttpParams } from '@angular/common/http';
 const API = 'https://64f6f41e9d7754084952d8a0.mockapi.io/travels';
 @Injectable({
   providedIn: 'root',
@@ -16,13 +17,31 @@ export class TravelDataService {
     return this.places;
   }
 
-  getpageListPagination(page: number, limit: number, searchTerm?: string) {
-    let url = `${API}?limit=${limit}&page=${page}`;
-    if (searchTerm) {
-      url += `&search=${searchTerm}`;
-    }
+  // getpageListPagination(page: number, limit: number, searchTerm: string='', sortBy:string='',order='') {
 
-    return this.http.get<place[]>(url);
+  //   let url = `${API}?limit=${limit}&page=${page}`;
+  //   if (searchTerm) {
+  //     url += `&search=${searchTerm}`;
+  //   }
+
+  //   return this.http.get<place[]>(url);
+  // }
+
+  getpageListPagination(
+    page: number,
+    limit: number,
+    search: string = '',
+    sortBy: string = '',
+    order = ''
+  ) {
+    let params = new HttpParams()
+      .set('limit', limit)
+      .set('page', page)
+      .set('search', search)
+      .set('sortBy', sortBy)
+      .set('order', order);
+
+    return this.http.get<place[]>(API, { params });
   }
 
   getPlaceListFromMockAPI() {

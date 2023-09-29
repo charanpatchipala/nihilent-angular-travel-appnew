@@ -38,7 +38,7 @@ import {
   MatDialogModule,
 } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     PlacesComponent,
@@ -73,6 +73,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
     MatProgressBarModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSelectModule,
   ],
   providers: [TravelDataService, MatDialog],
 })

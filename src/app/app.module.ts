@@ -33,7 +33,7 @@ import { EditplaceComponent } from './editplace/editplace.component';
 import { PlacedetailComponent } from './placedetail/placedetail.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-
+// import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
@@ -57,6 +57,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatMenuModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
