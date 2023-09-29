@@ -5,13 +5,19 @@
       <mat-icon matPrefix>location_searching</mat-icon>
       <input
         formControlName="search"
-        type="text"
+        type="search"
         matInput
         placeholder="Ex. goa"
         list="search_list"
       />
 
-      <datalist id="search_list">
+      <datalist
+        *ngIf="
+          searchForm.get('search')?.value !== null &&
+          searchForm.get('search')?.value !== ''
+        "
+        id="search_list"
+      >
         <option
           class="option"
           *ngFor="let place of places"
@@ -22,16 +28,11 @@
 
         <!-- <option class="option" value="C++">C++</option> -->
       </datalist>
-
-      <mat-icon
-        matSuffix
-        *ngIf="
-          searchForm.get('search')?.value !== null &&
-          searchForm.get('search')?.value !== ''
-        "
-        (click)="onCancel()"
-        >cancel</mat-icon
-      >
+      <!-- *ngIf="
+      searchForm.get('search')?.value !== null &&
+      searchForm.get('search')?.value !== ''
+    " -->
+      <!-- <mat-icon matSuffix (click)="onCancel()">cancel</mat-icon> -->
     </mat-form-field>
 
     <mat-form-field>
