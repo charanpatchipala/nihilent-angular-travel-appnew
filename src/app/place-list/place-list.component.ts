@@ -83,12 +83,8 @@ export class PlaceListComponent {
   }
   onSortChange(event: MatSelectChange): void {
     this.sortType = event.value;
-    this.loadPlacesData();
   }
   // resetAndLoad() {
-  //   this.currentPage = 1;
-  //   this.hasMoreItems = true;
-  //   this.items.emit([]);
   //   this.loadMoreData();
   // }
 

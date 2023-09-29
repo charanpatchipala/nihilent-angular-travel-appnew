@@ -43,7 +43,9 @@ padding:1rem;
     background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background */
     z-index: 999; /* Optional: use a high z-index to ensure it's on top of other content */
   }
-  
+  .input::-webkit-search-clear-button {
+    display: none;
+  }
 
   @media(max-width:700px){
     .container{
