@@ -34,23 +34,24 @@
     " -->
       <!-- <mat-icon matSuffix (click)="onCancel()">cancel</mat-icon> -->
     </mat-form-field>
+    <div class="sort">
+      <mat-form-field>
+        <mat-label>Sort By</mat-label>
+        <mat-select (selectionChange)="onSortChange($event)">
+          <mat-option value="popular">destination</mat-option>
+          <mat-option value="rating">Rating</mat-option>
+          <mat-option value="date">Best time to visit</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Sort By</mat-label>
-      <mat-select (selectionChange)="onSortChange($event)">
-        <mat-option value="popular">destination</mat-option>
-        <mat-option value="rating">Rating</mat-option>
-        <mat-option value="date">Best time to visit</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Order</mat-label>
-      <mat-select (selectionChange)="onOrderChange($event)">
-        <mat-option value="asc">Ascending</mat-option>
-        <mat-option value="desc">Descending</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Order</mat-label>
+        <mat-select (selectionChange)="onOrderChange($event)">
+          <mat-option value="asc">Ascending</mat-option>
+          <mat-option value="desc">Descending</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </form>
   <div class="spinner-container" *ngIf="isLoading">
     <mat-spinner></mat-spinner>

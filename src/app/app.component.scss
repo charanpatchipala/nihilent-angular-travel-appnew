@@ -4,6 +4,9 @@
     display: none;
     background-color: skyblue;
     // align-items: center;
+    position: fixed;
+    top: 0px;
+    z-index: 2;
     // justify-content: space-between;
     color:black;
   }
@@ -11,6 +14,9 @@
 .navbar{
     background-color: skyblue;
     display: block;
+    position: fixed;
+    top: 0px;
+    z-index: 2;
 }
 .logo {
     font-family: Arial, sans-serif;

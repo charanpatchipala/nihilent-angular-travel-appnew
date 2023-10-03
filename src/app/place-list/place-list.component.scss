@@ -5,6 +5,7 @@
     justify-content: space-around; 
     gap: 30px;
     flex-wrap: wrap;
+    min-height: 100vh;
 padding:1rem;
 }
 .placebg{
@@ -24,12 +25,16 @@ padding:1rem;
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-  
-    margin: 10px auto;
+    margin: 0 auto;
+    margin-top: 80px;
   }
 
   .example-full-width {
     width: 100%;
+  
+  }
+  .sort{
+    display: flex;
   }
   .spinner-container {
     display: flex;

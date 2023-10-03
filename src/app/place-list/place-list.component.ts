@@ -27,7 +27,7 @@ export class PlaceListComponent {
   searchForm = this.fb.group({
     search: '',
   });
-  sortType: string = 'default'; // default, title, or date
+  sortType: string = 'default';
   order: string = ''; // asc or desc
   get search() {
     return this.searchForm.get('search');
@@ -41,6 +41,8 @@ export class PlaceListComponent {
       search: '',
     });
     this.getPlaceList = new Subscription();
+    this.sortType = 'default'; // Initialize to default
+    this.order = ''; // Initialize to an empty string
   }
   ngOnInit() {
     this.search?.valueChanges
@@ -83,6 +85,7 @@ export class PlaceListComponent {
   }
   onSortChange(event: MatSelectChange): void {
     this.sortType = event.value;
+    this.loadPlacesData();
   }
   // resetAndLoad() {
   //   this.loadMoreData();
