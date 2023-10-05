@@ -35,7 +35,7 @@
       <!-- <mat-icon matSuffix (click)="onCancel()">cancel</mat-icon> -->
     </mat-form-field>
     <div class="sort">
-      <mat-form-field>
+      <mat-form-field class="filter">
         <mat-label>Sort By</mat-label>
         <mat-select (selectionChange)="onSortChange($event)">
           <mat-option value="destination">destination</mat-option>
@@ -44,7 +44,7 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field class="filter">
         <mat-label>Order</mat-label>
         <mat-select (selectionChange)="onOrderChange($event)">
           <mat-option value="asc">Ascending</mat-option>
