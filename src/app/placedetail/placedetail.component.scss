@@ -17,6 +17,7 @@ section {
   border-radius: 8px;
   max-width: 930px;
   margin: 0 auto;
+  margin-top: 63px;
   box-sizing: border-box;
 }
 
@@ -78,7 +79,6 @@ mat-card{
   
   .video-container {
     width: 100%;
-    max-width: 930px;
     object-fit: cover;
     overflow: hidden;
   }

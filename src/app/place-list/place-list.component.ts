@@ -27,8 +27,8 @@ export class PlaceListComponent {
   searchForm = this.fb.group({
     search: '',
   });
-  sortType: string = 'default';
-  order: string = ''; // asc or desc
+  sortType: string = 'rating';
+  order: string = 'asc'; // asc or desc
   get search() {
     return this.searchForm.get('search');
   }
@@ -53,6 +53,7 @@ export class PlaceListComponent {
       )
       .subscribe((plcList) => {
         this.places = plcList;
+        this.applySorting();
       });
     // this.loadPlacesData();
   }
@@ -62,6 +63,7 @@ export class PlaceListComponent {
       .getPlaceListFromMockAPI()
       .subscribe((plcList) => {
         this.places = plcList;
+        this.applySorting();
       });
   }
 
@@ -70,6 +72,7 @@ export class PlaceListComponent {
     // this.getPlaceList.unsubscribe();
     if (this.getPlaceList) {
       this.getPlaceList.unsubscribe();
+      this.applySorting();
     }
   }
   onCancel() {
@@ -85,16 +88,36 @@ export class PlaceListComponent {
   }
   onSortChange(event: MatSelectChange): void {
     this.sortType = event.value;
-    this.loadPlacesData();
+    this.applySorting();
+  }
+  onOrderChange(event: MatSelectChange): void {
+    this.order = event.value;
+    this.applySorting();
   }
   // resetAndLoad() {
   //   this.loadMoreData();
   // }
-
-  onOrderChange(event: MatSelectChange): void {
-    this.order = event.value;
-    this.loadPlacesData();
+  applySorting() {
+    if (this.sortType && this.order) {
+      // Implement sorting logic based on this.sortType and this.order
+      this.places.sort((a: place, b: place) => {
+        const sortOrder = this.order === 'asc' ? 1 : -1;
+        if (this.sortType === 'destination') {
+          return a.destination.localeCompare(b.destination) * sortOrder;
+        } else if (this.sortType === 'rating') {
+          return (a.rating - b.rating) * sortOrder;
+        } else if (this.sortType === 'date') {
+          // You might need to parse dates and compare them appropriately
+          // Example:
+          return (
+            new Date(a.date).getTime() - new Date(b.date).getTime() * sortOrder
+          );
+        }
+        return 0;
+      });
+    }
   }
+
   onNewItems(newItems: place[]): void {
     if (newItems.length === 0) {
       this.places = []; // Reset the list if an empty array is received

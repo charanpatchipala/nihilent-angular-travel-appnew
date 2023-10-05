@@ -35,20 +35,11 @@ export class TravelDataService {
     order = ''
   ) {
     let params = new HttpParams()
-      .set('limit', limit.toString())
-      .set('page', page.toString());
-
-    if (search) {
-      params = params.set('search', search);
-    }
-
-    if (sortBy) {
-      params = params.set('sortBy', sortBy);
-    }
-
-    if (order) {
-      params = params.set('order', order);
-    }
+      .set('limit', limit)
+      .set('page', page)
+      .set('search', search)
+      .set('sortBy', sortBy)
+      .set('order', order);
 
     return this.http.get<place[]>(API, { params });
   }
@@ -98,7 +89,7 @@ export class TravelDataService {
   openConfirmDialog() {
     return this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '450px',
-      data: { message: 'Are you sure you want to delete this movie?' },
+      data: { message: 'Are you sure you want to delete this destination?' },
     });
   }
 }
