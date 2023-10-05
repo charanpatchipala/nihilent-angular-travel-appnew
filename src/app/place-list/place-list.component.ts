@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import {
   debounceTime,
   distinctUntilChanged,
+  map,
   Observable,
+  startWith,
   Subscription,
   switchMap,
 } from 'rxjs';
@@ -29,6 +31,8 @@ export class PlaceListComponent {
   });
   sortType: string = 'rating';
   order: string = 'asc'; // asc or desc
+  previousSearches: string[] = [];
+  filteredOptions!: Observable<string[]>;
   get search() {
     return this.searchForm.get('search');
   }
@@ -44,18 +48,22 @@ export class PlaceListComponent {
     this.sortType = 'default'; // Initialize to default
     this.order = ''; // Initialize to an empty string
   }
+
   ngOnInit() {
-    this.search?.valueChanges
-      .pipe(
-        debounceTime(1500),
-        distinctUntilChanged(),
-        switchMap((name) => this.placeService.searchPlaceList(name || ''))
-      )
-      .subscribe((plcList) => {
-        this.places = plcList;
-        this.applySorting();
-      });
-    // this.loadPlacesData();
+    this.filteredOptions = this.searchForm.get('search')!.valueChanges.pipe(
+      startWith(''),
+      debounceTime(1500),
+      distinctUntilChanged(),
+      switchMap((name) => {
+        const searchName = name || ''; // Default to an empty string if 'name' is null
+        this.searchTerm = searchName;
+
+        return this.placeService.searchPlaceList(searchName);
+      }),
+      map((plc) => plc.map((rc) => rc.destination))
+    );
+
+    // this.loadReceipesData();
   }
 
   loadPlacesData() {
@@ -63,7 +71,7 @@ export class PlaceListComponent {
       .getPlaceListFromMockAPI()
       .subscribe((plcList) => {
         this.places = plcList;
-        this.applySorting();
+        // this.applySorting();
       });
   }
 
@@ -98,6 +106,13 @@ export class PlaceListComponent {
   //   this.loadMoreData();
   // }
   applySorting() {
+    this.places = this.places.filter((plc) => {
+      const matchesSearch =
+        !this.searchTerm ||
+        plc.destination.toLowerCase().includes(this.searchTerm.toLowerCase());
+      return matchesSearch;
+    });
+
     if (this.sortType && this.order) {
       // Implement sorting logic based on this.sortType and this.order
       this.places.sort((a: place, b: place) => {
@@ -107,10 +122,9 @@ export class PlaceListComponent {
         } else if (this.sortType === 'rating') {
           return (a.rating - b.rating) * sortOrder;
         } else if (this.sortType === 'date') {
-          // You might need to parse dates and compare them appropriately
-          // Example:
           return (
-            new Date(a.date).getTime() - new Date(b.date).getTime() * sortOrder
+            (new Date(a.date).getMonth() - new Date(b.date).getMonth()) *
+            sortOrder
           );
         }
         return 0;
@@ -119,11 +133,18 @@ export class PlaceListComponent {
   }
 
   onNewItems(newItems: place[]): void {
-    if (newItems.length === 0) {
-      this.places = []; // Reset the list if an empty array is received
-    } else {
-      this.places = [...this.places, ...newItems];
-    }
+    // Create a set of existing place IDs for quick look-up
+    const existingPlaceIds = new Set(this.places.map((place) => place.id));
+
+    // Filter out new items that have IDs already in the existing places
+    const uniqueNewItems = newItems.filter(
+      (newItem) => !existingPlaceIds.has(newItem.id)
+    );
+
+    // Concatenate the unique new items with the existing places
+    this.places = [...this.places, ...uniqueNewItems];
+
+    this.applySorting();
   }
 
   onLoadingChange(isLoading: boolean): void {

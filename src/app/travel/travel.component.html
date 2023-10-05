@@ -24,7 +24,9 @@
         </button>
         <span class="name">⭐{{ Place.rating }}</span>
       </div>
-      <span>BEST TIME TO VISIT:{{ Place.date }}</span>
+      <span
+        ><em>BEST TIME TO VISIT: </em> {{ Place.date | date : "MMMM" }}</span
+      >
       <!-- <em>{{ Place.date | date : "MMMM" }}</em> -->
       <!-- <p *ngIf="show" class="content">{{ Place.description }}</p> -->
       <div class="footer">
