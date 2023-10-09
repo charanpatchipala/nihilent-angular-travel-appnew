@@ -34,6 +34,7 @@ import { EditplaceComponent } from './editplace/editplace.component';
 import { PlacedetailComponent } from './placedetail/placedetail.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FavouriteComponent } from './favourite/favourite.component';
 // import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [AppComponent, HomeComponent],

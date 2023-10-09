@@ -13,8 +13,23 @@
       *ngIf="hovered"
     /> -->
     <img src="{{ Place.place }}" alt="place" class="poster zoom-on-hover" />
+    <button
+      mat-button
+      color="primary"
+      class="favourite"
+      (click)="toggleFavorite()"
+    >
+      <mat-icon
+        [class.colored]="Place.favourite"
+        [class.white]="!Place.favourite"
+        >favorite</mat-icon
+      >
+      <!-- <mat-icon >favorite_border</mat-icon> -->
+    </button>
+
     <p *ngIf="Place.popular" class="placebadge">Popular</p>
-    <div class="placecontent" *ngIf="hovered">
+    <!-- <div class="placecontent" *ngIf="hovered"> -->
+    <div class="placecontent">
       <div class="Pname">
         <span class="name">
           <mat-icon>place</mat-icon> {{ Place.destination }}</span

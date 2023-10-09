@@ -40,6 +40,7 @@ import {
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FavouriteComponent } from '../favourite/favourite.component';
 @NgModule({
   declarations: [
     PlacesComponent,
@@ -51,6 +52,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     PlacedetailComponent,
     InfiniteScrollDirective,
     ConfirmDialogComponent,
+    FavouriteComponent,
   ],
   imports: [
     CommonModule,

@@ -23,6 +23,7 @@ type place = {
   suggestions: string;
   accommodation: string;
   place: string;
+  favourite: boolean;
 };
 
 @Component({

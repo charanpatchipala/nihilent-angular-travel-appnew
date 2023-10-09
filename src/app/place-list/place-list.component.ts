@@ -13,6 +13,7 @@ import { place } from '../app.component';
 import { TravelDataService } from '../travel-data.service';
 import { MatSelectChange } from '@angular/material/select';
 import { PageEvent } from '@angular/material/paginator';
+import { ThemeService } from '../theme.service';
 // import { MatPaginatorModule } from '@angular/material/paginator';
 @Component({
   selector: 'app-place-list',
@@ -33,13 +34,17 @@ export class PlaceListComponent {
   order: string = 'asc'; // asc or desc
   previousSearches: string[] = [];
   filteredOptions!: Observable<string[]>;
+
+  isDarkTheme = false; // Initial theme state
+  isLightTheme = true; // Initial theme state
   get search() {
     return this.searchForm.get('search');
   }
 
   constructor(
     private fb: FormBuilder,
-    private placeService: TravelDataService
+    private placeService: TravelDataService,
+    public themeService: ThemeService
   ) {
     this.searchForm = this.fb.group({
       search: '',
@@ -48,6 +53,21 @@ export class PlaceListComponent {
     this.sortType = 'default'; // Initialize to default
     this.order = ''; // Initialize to an empty string
   }
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
+  // toggleTheme() {
+  //   this.isDarkTheme = !this.isDarkTheme;
+  //   this.isLightTheme = !this.isLightTheme;
+
+  //   // Use a theme service to set the active theme
+  //   if (this.isDarkTheme) {
+  //     this.themeService.setDarkTheme();
+  //   } else {
+  //     this.themeService.setLightTheme();
+  //   }
+  // }
 
   ngOnInit() {
     this.filteredOptions = this.searchForm.get('search')!.valueChanges.pipe(

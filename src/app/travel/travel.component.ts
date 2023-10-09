@@ -27,6 +27,7 @@ export class TravelComponent {
     suggestions: '',
     accommodation: '',
     place: '',
+    favourite: false,
   };
 
   @Input() idx: number = 0;
@@ -60,6 +61,12 @@ export class TravelComponent {
         })
       )
       .subscribe();
+  }
+  toggleFavorite() {
+    this.Place.favourite = !this.Place.favourite;
+    this.placeService
+      .updateFavourite(this.Place as place, this.Place.id)
+      .subscribe(() => {});
   }
 
   openConfirmDialog() {

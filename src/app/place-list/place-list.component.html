@@ -1,5 +1,13 @@
 <div class="background-container">
   <form [formGroup]="searchForm" class="example-form">
+    <div
+      [ngClass]="{ 'dark-theme': themeService.isDarkTheme }"
+      class="component-container"
+    >
+      <mat-slide-toggle (change)="toggleTheme()">
+        {{ themeService.isDarkTheme ? "Dark Theme" : "Light Theme" }}
+      </mat-slide-toggle>
+    </div>
     <mat-form-field class="example-full-width">
       <mat-label>Search places</mat-label>
       <mat-icon matPrefix>location_searching</mat-icon>
@@ -78,10 +86,10 @@
     (loading)="onLoadingChange($event)"
   ></section>
   <div class="container">
-    <img
+    <!-- <img
       src="https://cdn.pixabay.com/photo/2016/06/10/22/19/beach-1449008_1280.jpg"
       class="placebg"
-    />
+    /> -->
 
     <app-travel
       *ngFor="let place of places; let i = index"

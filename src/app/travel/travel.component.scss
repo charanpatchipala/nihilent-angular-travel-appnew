@@ -21,6 +21,7 @@ mat-card{
 
     }
     
+   
     .placebadge{
         background:orangered;
         color: white;
@@ -30,6 +31,32 @@ mat-card{
        right:0px;
        /* transform: translateX(50%); */
        border-radius: 0.5rem;
+    }
+ .colored {
+        color: red; 
+       
+      }
+      
+      .white {
+        color: white; 
+        
+      }
+      .colored, .white{
+        font-size: 30px;
+      }
+
+    .favourite{
+        position: absolute; 
+        top: 20px;
+        left: 0px;
+        text-align: center;
+        border: none;
+        background: none;
+    }
+
+    .mat-icon{
+        width: 50px;
+        height:50px;
     }
     
      .placecontent{
@@ -46,7 +73,10 @@ mat-card{
         justify-content: space-between;
     }
     .name{
+        // display: flex;
         font-weight: 900;
+        // align-items: center;
+        // text-align: center;
     }
     
     .poster {

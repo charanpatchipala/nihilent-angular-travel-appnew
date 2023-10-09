@@ -1,0 +1,10 @@
+
+.container { 
+    display: flex;
+    justify-content: space-around; 
+    gap: 30px;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    margin-top: 100px;
+padding:1rem;
+}

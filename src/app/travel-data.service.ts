@@ -5,14 +5,23 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { HttpParams } from '@angular/common/http';
+import { Subject } from 'rxjs';
 const API = 'https://64f6f41e9d7754084952d8a0.mockapi.io/travels';
 @Injectable({
   providedIn: 'root',
 })
 export class TravelDataService {
   places: Array<place> = [];
+  // private removeFromFavoritesSubject = new Subject<void>();
   constructor(private http: HttpClient, private dialog: MatDialog) {}
-
+  // Method to emit the Subject when a place is removed from favorites
+  // emitRemoveFromFavorites() {
+  //   this.removeFromFavoritesSubject.next();
+  // }
+  // // Subscribe to this Subject in your component to refresh the data
+  // getRemoveFromFavoritesSubject() {
+  //   return this.removeFromFavoritesSubject.asObservable();
+  // }
   getPlaces() {
     return this.places;
   }
@@ -50,6 +59,11 @@ export class TravelDataService {
     );
   }
 
+  getfavourite() {
+    return this.http.get<place[]>(
+      'https://64f6f41e9d7754084952d8a0.mockapi.io/travels?favourite=true'
+    );
+  }
   searchPlaceList(name: string) {
     return this.http.get<place[]>(
       `https://64f6f41e9d7754084952d8a0.mockapi.io/travels?search=${name}`
@@ -73,6 +87,13 @@ export class TravelDataService {
     return this.http.put(
       `https://64f6f41e9d7754084952d8a0.mockapi.io/travels/${id}`,
       updatePlace
+    );
+  }
+
+  updateFavourite(favourite: place, id: string) {
+    return this.http.put(
+      `https://64f6f41e9d7754084952d8a0.mockapi.io/travels/${id}`,
+      favourite
     );
   }
 

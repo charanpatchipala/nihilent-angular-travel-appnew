@@ -1,0 +1,9 @@
+<section class="container">
+  <app-travel
+    *ngFor="let place of places; let i = index"
+    [Place]="place"
+    [idx]="i"
+    (rmvPlace)="loadPlacesData()"
+  >
+  </app-travel>
+</section>
