@@ -5,7 +5,6 @@
       <mat-icon matPrefix>location_searching</mat-icon>
       <input
         formControlName="search"
-        type="search"
         matInput
         placeholder="Ex. goa"
         [matAutocomplete]="auto"
@@ -19,6 +18,18 @@
           {{ option }}
         </mat-option>
       </mat-autocomplete>
+      <button
+        matSuffix
+        mat-icon-button
+        *ngIf="
+          searchForm.get('search')?.value !== null &&
+          searchForm.get('search')?.value !== ''
+        "
+        (click)="clearSearch()"
+      >
+        <h3>x</h3>
+        <!-- <mat-icon>close</mat-icon> -->
+      </button>
     </mat-form-field>
     <!-- </mat-form-field> -->
   </form>

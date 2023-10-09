@@ -150,4 +150,7 @@ export class PlaceListComponent {
   onLoadingChange(isLoading: boolean): void {
     this.isLoading = isLoading;
   }
+  clearSearch() {
+    this.searchForm.get('search')?.setValue('');
+  }
 }
